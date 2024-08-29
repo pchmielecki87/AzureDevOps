@@ -6,7 +6,7 @@
     <server>
       <id>techbrain-feed</id>
       <username>pchmielecki87</username>
-      <password>${env.SYSTEM_ACCESSTOKEN}</password>
+      <password>{sk1MYzaV2EkHUtneHxj2m3Tlc44yVkCTi1wB5LzaFb2flLp7LQ1uJxgTybA9/rk3J7UmB9PHxhVU79VwoLXviAQi7cgqYTJpb0nNZXfDH9M=}</password>
     </server>
   </servers>
 </settings>
