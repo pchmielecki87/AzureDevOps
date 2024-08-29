@@ -1,5 +1,4 @@
-
-package com.example;
+package one.techbrain;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
