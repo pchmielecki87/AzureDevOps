@@ -1,6 +1,9 @@
 trigger:
 - main
 
+variables:
+  system.debug: 'true'
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -42,23 +45,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'java-app-jar'
     publishLocation: 'Container'
-      
-# - task: PublishBuildArtifacts@1
-#   displayName: Publish Build Artifacts
-#   inputs:
-#     PathtoPublish: '$(System.DefaultWorkingDirectory)/target/*.jar'
-#     ArtifactName: 'java-app-jar'
-#     publishLocation: 'Container'
 
-# - task: UniversalPackages@0
-#   displayName: Publish Universal Package to Feed
+# # Maven Authenticate v0
+# - task: MavenAuthenticate@0
 #   inputs:
-#     command: 'publish'
-#     publishDirectory: '$(System.DefaultWorkingDirectory)/target'
-#     feedsToUse: 'internal'
-#     vstsFeedPublish: 'YourFeedName'
-#     vstsFeedPackagePublish: 'SimpleJavaApp'
-#     packagePublishDescription: 'SimpleJavaApp package'
+#     artifactsFeeds: # string. Feeds. 
+#     mavenServiceConnections: # string. Credentials for repositories outside this organization/collection.
 
 - task: Maven@4
   displayName: 'Publish to ADO techbrain-feed'

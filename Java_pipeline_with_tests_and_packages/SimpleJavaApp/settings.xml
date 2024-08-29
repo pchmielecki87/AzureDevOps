@@ -6,7 +6,7 @@
     <server>
       <id>techbrain-feed</id>
       <username>pchmielecki87</username>
-      <password>${maven-feed-package-rw}</password>
+      <password>${env.SYSTEM_ACCESSTOKEN}</password>
     </server>
   </servers>
 </settings>
