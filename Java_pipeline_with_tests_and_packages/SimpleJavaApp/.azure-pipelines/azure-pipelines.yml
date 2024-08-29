@@ -12,7 +12,6 @@ steps:
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
     jdkVersionOption: '11'
-    jdkArchitectureOption: 'x64'
     checkLatest: true
 
 - script: |
