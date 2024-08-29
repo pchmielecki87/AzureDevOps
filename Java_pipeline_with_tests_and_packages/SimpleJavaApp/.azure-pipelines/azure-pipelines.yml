@@ -29,6 +29,19 @@ steps:
     testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
     failTaskOnFailedTests: true
 
+- task: CopyFiles@2
+  displayName: Copy Artifacts
+  inputs:
+    Contents: '**'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish Build Artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp//target/*.jar'
+    ArtifactName: 'java-app-jar'
+    publishLocation: 'Container'
+      
 # - task: PublishBuildArtifacts@1
 #   displayName: Publish Build Artifacts
 #   inputs:
@@ -45,10 +58,6 @@ steps:
 #     vstsFeedPublish: 'YourFeedName'
 #     vstsFeedPackagePublish: 'SimpleJavaApp'
 #     packagePublishDescription: 'SimpleJavaApp package'
-
-# Create settings.xml for ADO Maven feed
-
-
 
 - task: Maven@4
   displayName: 'Publish to ADO techbrain-feed'
