@@ -55,10 +55,9 @@ steps:
   inputs:
     mavenPomFile: '$(system.defaultWorkingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/pom.xml'
     goals: 'deploy'
-    # options: '-DskipTests'
+    options: '-DskipTests'
     publishJUnitResults: false
-    # mavenOptions: '-Xmx1024m'
-    mavenOptions: '--settings $(system.defaultWorkingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/settings.xml -DskipTests'
+    mavenOptions: '-Xmx1024m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
