@@ -4,6 +4,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+defaults:
+  workingDirectory: $(System.DefaultWorkingDirectory)/Java_pipeline_with_tests_and_packages
+
 steps:
 - script: |
     sudo apt-get update
@@ -14,6 +17,7 @@ steps:
   displayName: 'Install Java 11'
 
 - task: Maven@4
+  displayName: Maven Clean Package
   inputs:
     mavenPomFile: '$(System.DefaultWorkingDirectory/pom.xml'
     mavenOptions: '-Xmx3072m'
@@ -24,18 +28,21 @@ steps:
     goals: 'clean package'
 
 - task: PublishTestResults@2
+  displayName: Publish Test Results
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/target/surefire-reports/TEST-*.xml'
     failTaskOnFailedTests: true
 
 - task: PublishBuildArtifacts@1
+  displayName: Publish Build Artifacts
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)/target/*.jar'
     ArtifactName: 'java-app-jar'
     publishLocation: 'Container'
 
 - task: UniversalPackages@0
+  displayName: Publish Universal Package to Feed
   inputs:
     command: 'publish'
     publishDirectory: '$(System.DefaultWorkingDirectory)/target'
