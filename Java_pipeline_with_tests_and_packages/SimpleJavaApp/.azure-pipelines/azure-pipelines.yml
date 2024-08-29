@@ -32,13 +32,14 @@ steps:
 - task: CopyFiles@2
   displayName: Copy Artifacts
   inputs:
-    Contents: '**'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    SourceFolder: '$(build.artifactstagingdirectory)'
+    Contents: '**/?(*.jar)'
+    TargetFolder: '$(build.artifactstagingdirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/target/'
 
 - task: PublishBuildArtifacts@1
   displayName: Publish Build Artifacts
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/target/*.jar'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/target/'
     ArtifactName: 'java-app-jar'
     publishLocation: 'Container'
       
