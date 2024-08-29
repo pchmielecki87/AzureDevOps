@@ -32,9 +32,9 @@ steps:
 - task: CopyFiles@2
   displayName: Copy Artifacts
   inputs:
-    SourceFolder: '$(build.artifactstagingdirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/target/'
+    SourceFolder: '$(system.defaultWorkingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/target/'
     Contents: '**/?(*.jar)'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    TargetFolder: '$(build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: Publish Build Artifacts
