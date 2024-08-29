@@ -9,6 +9,8 @@ steps:
     sudo apt-get update
     sudo apt-get install -y openjdk-11-jdk
     java -version
+    pwd
+    ls -lah
   displayName: 'Install Java 11'
 
 - task: Maven@4
