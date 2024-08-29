@@ -46,14 +46,19 @@ steps:
 #     vstsFeedPackagePublish: 'SimpleJavaApp'
 #     packagePublishDescription: 'SimpleJavaApp package'
 
+# Create settings.xml for ADO Maven feed
+
+
+
 - task: Maven@4
   displayName: 'Publish to ADO techbrain-feed'
   inputs:
     mavenPomFile: '$(system.defaultWorkingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/pom.xml'
     goals: 'deploy'
-    options: '-DskipTests'
+    # options: '-DskipTests'
     publishJUnitResults: false
-    mavenOptions: '-Xmx1024m'
+    # mavenOptions: '-Xmx1024m'
+    mavenOptions: '--settings $(system.defaultWorkingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/settings.xml -DskipTests'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
