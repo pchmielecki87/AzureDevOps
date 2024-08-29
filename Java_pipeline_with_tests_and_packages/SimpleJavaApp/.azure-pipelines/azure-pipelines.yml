@@ -14,7 +14,7 @@ steps:
 - task: Maven@4
   displayName: Maven Clean Package
   inputs:
-    mavenPomFile: '$(system.defaultWorkingDirectory)/Java_pipeline_with_tests_and_packages/pom.xml'
+    mavenPomFile: '$(system.defaultWorkingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: 'default'
