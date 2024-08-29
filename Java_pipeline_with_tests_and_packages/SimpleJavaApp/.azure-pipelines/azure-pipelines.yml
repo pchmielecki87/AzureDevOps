@@ -46,12 +46,6 @@ steps:
     ArtifactName: 'java-app-jar'
     publishLocation: 'Container'
 
-# # Maven Authenticate v0
-# - task: MavenAuthenticate@0
-#   inputs:
-#     artifactsFeeds: # string. Feeds. 
-#     mavenServiceConnections: # string. Credentials for repositories outside this organization/collection.
-
 - task: Maven@4
   displayName: 'Publish to ADO techbrain-feed'
   inputs:
