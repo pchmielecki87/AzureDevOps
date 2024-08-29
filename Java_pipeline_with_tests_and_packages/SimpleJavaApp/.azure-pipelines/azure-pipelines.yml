@@ -38,7 +38,7 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: Publish Build Artifacts
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp//target/*.jar'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'java-app-jar'
     publishLocation: 'Container'
       
