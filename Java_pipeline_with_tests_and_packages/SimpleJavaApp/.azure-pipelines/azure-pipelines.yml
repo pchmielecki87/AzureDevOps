@@ -49,7 +49,7 @@ steps:
 - task: Maven@4
   displayName: 'Publish to ADO techbrain-feed'
   inputs:
-    mavenPomFile: 'pom.xml'
+    mavenPomFile: '$(system.defaultWorkingDirectory)/Java_pipeline_with_tests_and_packages/SimpleJavaApp/pom.xml'
     goals: 'deploy'
     options: '-DskipTests'
     publishJUnitResults: false
