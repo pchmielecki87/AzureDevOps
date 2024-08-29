@@ -4,11 +4,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-defaults:
-  workingDirectory: $(System.DefaultWorkingDirectory)/Java_pipeline_with_tests_and_packages
-
 steps:
 - script: |
+    workingDirectory: $(System.DefaultWorkingDirectory)/Java_pipeline_with_tests_and_packages
     sudo apt-get update
     sudo apt-get install -y openjdk-11-jdk
     java -version
@@ -19,7 +17,7 @@ steps:
 - task: Maven@4
   displayName: Maven Clean Package
   inputs:
-    mavenPomFile: '$(System.DefaultWorkingDirectory/pom.xml'
+    mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
     jdkVersionOption: 'default'
