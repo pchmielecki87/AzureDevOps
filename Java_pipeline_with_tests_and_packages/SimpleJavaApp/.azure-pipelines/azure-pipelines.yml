@@ -11,8 +11,14 @@ steps:
     java -version
   displayName: 'Install Java 11'
 
-- task: Maven@3
+- task: Maven@4
   inputs:
+    mavenPomFile: '$(System.DefaultWorkingDirectory/pom.xml'
+    mavenOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: 'default'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
     goals: 'clean package'
 
 - task: PublishTestResults@2
