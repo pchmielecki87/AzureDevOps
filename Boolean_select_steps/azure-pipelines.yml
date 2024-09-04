@@ -1,0 +1,57 @@
+---
+parameters:
+  - name: verJava
+    displayName: Version of Java
+    values:
+    - 11
+    - 13
+    - 17
+  - name: tag
+    displayName: tag
+    values:
+    - latest
+    - oldest
+  - name: stage1
+    displayName: Enable Stage1
+    default: false
+    type: boolean
+  - name: stage2
+    displayName: Enable Stage2
+    default: true
+    type: boolean
+
+# Optional STAGE1
+stages:
+  - stage: stage1
+    displayName: stage1
+    jobs:
+      - job: echoJavaVer
+        displayName: Echo Java version
+        condition: eq('${{ parameters.stage1 }}', 'true')
+        steps:
+          - task: CmdLine@2
+            displayName: Echo Java version
+            inputs:
+              script: |
+                echo ${{ parameters.verJava }}
+          - task: CmdLine@2
+            displayName: Install Java
+            inputs:
+              script: |
+                sudo apt-get update
+                sudo apt-get install -y openjdk-${{ parameters.verJava }}-jdk
+                java -version
+
+# Optional STAGE2
+  - stage: stage2
+    displayName: stage2
+    jobs:
+      - job: echoTag
+        displayName: Echo selected tag
+        condition: eq('${{ parameters.stage2 }}', 'true')
+        steps:
+          - task: CmdLine@2
+            displayName: Echo tag version
+            inputs:
+              script: |
+                echo ${{ parameters.tag }}
